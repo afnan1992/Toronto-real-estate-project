@@ -8,10 +8,10 @@ I created this project to understand the fundamentals behind web scraping and ho
 
 # Setting up Infrastructure using Terraform
 
-   Go to the root directory of this project
-   cd into terrafrom directory
-   terraform apply -var "db_password=YourPassword" (This is needed to setup the password for redshift cluster)
-   terraform destroy (To destroy the structure)
+1. Go to the root directory of this project
+2. cd into terrafrom directory
+3. terraform apply -var "db_password=YourPassword" (This is needed to setup the password for redshift cluster)
+4. terraform destroy (To destroy the Infrastructure)
 
 
 # How to Run
