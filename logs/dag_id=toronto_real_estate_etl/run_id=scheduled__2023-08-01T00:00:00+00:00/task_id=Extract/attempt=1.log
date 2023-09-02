@@ -1,0 +1,80 @@
+[2023-08-02T09:12:23.862+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract scheduled__2023-08-01T00:00:00+00:00 [queued]>
+[2023-08-02T09:12:23.869+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract scheduled__2023-08-01T00:00:00+00:00 [queued]>
+[2023-08-02T09:12:23.869+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-08-02T09:12:23.879+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-08-01 00:00:00+00:00
+[2023-08-02T09:12:23.883+0000] {standard_task_runner.py:57} INFO - Started process 67 to run task
+[2023-08-02T09:12:23.885+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'scheduled__2023-08-01T00:00:00+00:00', '--job-id', '85', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpuxx0n3kr']
+[2023-08-02T09:12:23.887+0000] {standard_task_runner.py:85} INFO - Job 85: Subtask Extract
+[2023-08-02T09:12:23.923+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract scheduled__2023-08-01T00:00:00+00:00 [running]> on host e5187b3c4256
+[2023-08-02T09:12:23.984+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-08-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-08-01T00:00:00+00:00'
+[2023-08-02T09:12:23.986+0000] {main.py:32} INFO - https://www.kijiji.ca/b-apartments-condos/page-1/c37l1700273
+[2023-08-02T09:17:23.747+0000] {main.py:61} INFO - /opt/***/dags/data/result_page_number_1_2023-08-02.json
+[2023-08-02T09:17:23.755+0000] {main.py:71} INFO - Scraping listings was successfull
+[2023-08-02T09:17:23.756+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-08-02T09:17:23.763+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230801T000000, start_date=20230802T091223, end_date=20230802T091723
+[2023-08-02T09:17:23.787+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-08-02T09:17:23.808+0000] {taskinstance.py:2653} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-08-02T09:19:42.505+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract scheduled__2023-08-01T00:00:00+00:00 [queued]>
+[2023-08-02T09:19:42.514+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract scheduled__2023-08-01T00:00:00+00:00 [queued]>
+[2023-08-02T09:19:42.515+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-08-02T09:19:42.526+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-08-01 00:00:00+00:00
+[2023-08-02T09:19:42.530+0000] {standard_task_runner.py:57} INFO - Started process 195 to run task
+[2023-08-02T09:19:42.533+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'scheduled__2023-08-01T00:00:00+00:00', '--job-id', '86', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpqxlr701c']
+[2023-08-02T09:19:42.534+0000] {standard_task_runner.py:85} INFO - Job 86: Subtask Extract
+[2023-08-02T09:19:42.571+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract scheduled__2023-08-01T00:00:00+00:00 [running]> on host e5187b3c4256
+[2023-08-02T09:19:42.633+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-08-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-08-01T00:00:00+00:00'
+[2023-08-02T09:19:42.634+0000] {main.py:32} INFO - https://www.kijiji.ca/b-apartments-condos/page-1/c37l1700273
+[2023-08-02T09:20:42.824+0000] {local_task_job_runner.py:292} WARNING - State of this instance has been externally set to None. Terminating instance.
+[2023-08-02T09:20:42.825+0000] {process_utils.py:135} INFO - Sending Signals.SIGTERM to group 195. PIDs of all processes in the group: [195]
+[2023-08-02T09:20:42.825+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 195
+[2023-08-02T09:20:42.826+0000] {taskinstance.py:1517} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-08-02T09:20:42.831+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 70, in extract
+    e.getListings(2)
+  File "/opt/airflow/dags/src/main.py", line 45, in getListings
+    s.getHeaderDetails()
+  File "/opt/airflow/dags/src/Scrape.py", line 41, in getHeaderDetails
+    r =session.get(self.link,headers=headers)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 497, in send
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 280, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/lib/python3.7/ssl.py", line 1071, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/lib/python3.7/ssl.py", line 929, in read
+    return self._sslobj.read(len, buffer)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1519, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2023-08-02T09:20:42.837+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230801T000000, start_date=20230802T091942, end_date=20230802T092042
+[2023-08-02T09:20:42.846+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 86 for task Extract ((psycopg2.errors.ForeignKeyViolation) insert or update on table "task_fail" violates foreign key constraint "task_fail_ti_fkey"
+DETAIL:  Key (dag_id, task_id, run_id, map_index)=(toronto_real_estate_etl, Extract, scheduled__2023-08-01T00:00:00+00:00, -1) is not present in table "task_instance".
+
+[SQL: INSERT INTO task_fail (task_id, dag_id, run_id, map_index, start_date, end_date, duration) VALUES (%(task_id)s, %(dag_id)s, %(run_id)s, %(map_index)s, %(start_date)s, %(end_date)s, %(duration)s) RETURNING task_fail.id]
+[parameters: {'task_id': 'Extract', 'dag_id': 'toronto_real_estate_etl', 'run_id': 'scheduled__2023-08-01T00:00:00+00:00', 'map_index': -1, 'start_date': datetime.datetime(2023, 8, 2, 9, 19, 42, 507438, tzinfo=Timezone('UTC')), 'end_date': datetime.datetime(2023, 8, 2, 9, 20, 42, 837380, tzinfo=Timezone('UTC')), 'duration': 60}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj); 195)
+[2023-08-02T09:20:42.878+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=195, status='terminated', exitcode=1, started='09:19:41') (195) terminated with exit code 1

@@ -1,0 +1,54 @@
+[2023-08-04T10:26:13.425+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.RawToS3 manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T10:26:13.432+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.RawToS3 manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T10:26:13.432+0000] {taskinstance.py:1308} INFO - Starting attempt 3 of 3
+[2023-08-04T10:26:13.442+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): RawToS3> on 2023-08-04 09:33:43.522776+00:00
+[2023-08-04T10:26:13.446+0000] {standard_task_runner.py:57} INFO - Started process 1133 to run task
+[2023-08-04T10:26:13.449+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'RawToS3', 'manual__2023-08-04T09:33:43.522776+00:00', '--job-id', '108', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpgjcilbtw']
+[2023-08-04T10:26:13.451+0000] {standard_task_runner.py:85} INFO - Job 108: Subtask RawToS3
+[2023-08-04T10:26:13.484+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.RawToS3 manual__2023-08-04T09:33:43.522776+00:00 [running]> on host e5187b3c4256
+[2023-08-04T10:26:13.540+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='RawToS3' AIRFLOW_CTX_EXECUTION_DATE='2023-08-04T09:33:43.522776+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-04T09:33:43.522776+00:00'
+[2023-08-04T10:26:13.714+0000] {Upload.py:48} INFO - page_number_1.json
+[2023-08-04T10:26:14.912+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/boto3/s3/transfer.py", line 292, in upload_file
+    future.result()
+  File "/home/airflow/.local/lib/python3.7/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.7/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/s3transfer/tasks.py", line 139, in __call__
+    return self._execute_main(kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/s3transfer/tasks.py", line 162, in _execute_main
+    return_value = self._main(**kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/s3transfer/upload.py", line 758, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "/home/airflow/.local/lib/python3.7/site-packages/botocore/client.py", line 530, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/botocore/client.py", line 964, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchBucket: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 33, in uploadRawtoS3
+    upload_to_s3(filepath,str(date))
+  File "/opt/airflow/dags/src/Upload.py", line 28, in upload_to_s3
+    upload_file_to_s3(conn,file,date)
+  File "/opt/airflow/dags/src/Upload.py", line 51, in upload_file_to_s3
+    result = conn.Bucket(BUCKET_NAME).upload_file(file,folderpath.format(basefile))
+  File "/home/airflow/.local/lib/python3.7/site-packages/boto3/s3/inject.py", line 239, in bucket_upload_file
+    Config=Config,
+  File "/home/airflow/.local/lib/python3.7/site-packages/boto3/s3/inject.py", line 148, in upload_file
+    callback=Callback,
+  File "/home/airflow/.local/lib/python3.7/site-packages/boto3/s3/transfer.py", line 300, in upload_file
+    filename, '/'.join([bucket, key]), e
+boto3.exceptions.S3UploadFailedError: Failed to upload /opt/***/dags/data/2023-08-04/page_number_1.json to afnan1992-toronto-real-estate-listings/data/2023-08-04/page_number_1.json: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+[2023-08-04T10:26:14.920+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=RawToS3, execution_date=20230804T093343, start_date=20230804T102613, end_date=20230804T102614
+[2023-08-04T10:26:14.930+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 108 for task RawToS3 (Failed to upload /opt/***/dags/data/2023-08-04/page_number_1.json to afnan1992-toronto-real-estate-listings/data/2023-08-04/page_number_1.json: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist; 1133)
+[2023-08-04T10:26:14.948+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-08-04T10:26:14.966+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

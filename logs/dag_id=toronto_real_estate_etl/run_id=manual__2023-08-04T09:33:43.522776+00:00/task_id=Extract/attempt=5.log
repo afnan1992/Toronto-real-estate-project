@@ -1,0 +1,16 @@
+[2023-08-04T10:21:44.201+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T10:21:44.208+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T10:21:44.208+0000] {taskinstance.py:1308} INFO - Starting attempt 5 of 5
+[2023-08-04T10:21:44.217+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-08-04 09:33:43.522776+00:00
+[2023-08-04T10:21:44.222+0000] {standard_task_runner.py:57} INFO - Started process 1059 to run task
+[2023-08-04T10:21:44.225+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'manual__2023-08-04T09:33:43.522776+00:00', '--job-id', '107', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp4u56et25']
+[2023-08-04T10:21:44.229+0000] {standard_task_runner.py:85} INFO - Job 107: Subtask Extract
+[2023-08-04T10:21:44.269+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [running]> on host e5187b3c4256
+[2023-08-04T10:21:44.328+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-08-04T09:33:43.522776+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-04T09:33:43.522776+00:00'
+[2023-08-04T10:21:44.330+0000] {logging_mixin.py:150} INFO - 2023-08-04
+[2023-08-04T10:21:44.330+0000] {Extract.py:31} INFO - https://www.kijiji.ca/b-apartments-condos/page-1/c37l1700273
+[2023-08-04T10:26:12.924+0000] {main.py:24} INFO - Scraping listings was successfull
+[2023-08-04T10:26:12.924+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-08-04T10:26:12.932+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230804T093343, start_date=20230804T102144, end_date=20230804T102612
+[2023-08-04T10:26:12.970+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-08-04T10:26:12.992+0000] {taskinstance.py:2653} INFO - 1 downstream tasks scheduled from follow-on schedule check

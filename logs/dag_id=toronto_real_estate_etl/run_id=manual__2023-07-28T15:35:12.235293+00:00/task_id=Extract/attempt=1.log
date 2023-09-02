@@ -1,0 +1,33 @@
+[2023-07-28T15:35:13.222+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T15:35:12.235293+00:00 [queued]>
+[2023-07-28T15:35:13.229+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T15:35:12.235293+00:00 [queued]>
+[2023-07-28T15:35:13.229+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-07-28T15:35:13.240+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-07-28 15:35:12.235293+00:00
+[2023-07-28T15:35:13.245+0000] {standard_task_runner.py:57} INFO - Started process 378 to run task
+[2023-07-28T15:35:13.248+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'manual__2023-07-28T15:35:12.235293+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp52owd6tz']
+[2023-07-28T15:35:13.250+0000] {standard_task_runner.py:85} INFO - Job 35: Subtask Extract
+[2023-07-28T15:35:13.289+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T15:35:12.235293+00:00 [running]> on host e5187b3c4256
+[2023-07-28T15:35:13.346+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-07-28T15:35:12.235293+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-28T15:35:12.235293+00:00'
+[2023-07-28T15:35:13.347+0000] {logging_mixin.py:150} INFO - /opt/***/dags/data/result_page_number_1_2023-07-28.json
+[2023-07-28T15:35:13.348+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 72, in extract
+    e.getListings(2)
+  File "/opt/airflow/dags/src/main.py", line 52, in getListings
+    self.saveToJson(i)
+  File "/opt/airflow/dags/src/main.py", line 65, in saveToJson
+    json.dump(dict1, fp,indent=True)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/usr/local/lib/python3.7/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 376, in _iterencode_dict
+    raise TypeError(f'keys must be str, int, float, bool or None, '
+TypeError: keys must be str, int, float, bool or None, not tuple
+[2023-07-28T15:35:13.354+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230728T153512, start_date=20230728T153513, end_date=20230728T153513
+[2023-07-28T15:35:13.362+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 35 for task Extract (keys must be str, int, float, bool or None, not tuple; 378)
+[2023-07-28T15:35:13.379+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-28T15:35:13.398+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

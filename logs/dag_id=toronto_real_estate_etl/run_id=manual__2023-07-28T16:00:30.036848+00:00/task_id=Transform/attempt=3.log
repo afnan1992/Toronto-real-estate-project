@@ -1,0 +1,25 @@
+[2023-07-28T16:15:57.105+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Transform manual__2023-07-28T16:00:30.036848+00:00 [queued]>
+[2023-07-28T16:15:57.113+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Transform manual__2023-07-28T16:00:30.036848+00:00 [queued]>
+[2023-07-28T16:15:57.113+0000] {taskinstance.py:1308} INFO - Starting attempt 3 of 3
+[2023-07-28T16:15:57.123+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Transform> on 2023-07-28 16:00:30.036848+00:00
+[2023-07-28T16:15:57.128+0000] {standard_task_runner.py:57} INFO - Started process 1144 to run task
+[2023-07-28T16:15:57.131+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Transform', 'manual__2023-07-28T16:00:30.036848+00:00', '--job-id', '56', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp9tuu_nol']
+[2023-07-28T16:15:57.133+0000] {standard_task_runner.py:85} INFO - Job 56: Subtask Transform
+[2023-07-28T16:15:57.171+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Transform manual__2023-07-28T16:00:30.036848+00:00 [running]> on host e5187b3c4256
+[2023-07-28T16:15:57.228+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-07-28T16:00:30.036848+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-28T16:00:30.036848+00:00'
+[2023-07-28T16:15:57.236+0000] {Transform.py:42} INFO - /opt/***/dags/transformed/result_page_number_/opt/***/dags/data//result_page_number_1_2023-07-28.json_2023-07-28.json
+[2023-07-28T16:15:57.236+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 89, in transform
+    t.saveToJson(filepath)
+  File "/opt/airflow/dags/src/Transform.py", line 43, in saveToJson
+    with open(filename, 'w+') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/transformed/result_page_number_/opt/airflow/dags/data//result_page_number_1_2023-07-28.json_2023-07-28.json'
+[2023-07-28T16:15:57.242+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=Transform, execution_date=20230728T160030, start_date=20230728T161557, end_date=20230728T161557
+[2023-07-28T16:15:57.250+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 56 for task Transform ([Errno 2] No such file or directory: '/opt/airflow/dags/transformed/result_page_number_/opt/airflow/dags/data//result_page_number_1_2023-07-28.json_2023-07-28.json'; 1144)
+[2023-07-28T16:15:57.263+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-28T16:15:57.280+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,14 @@
+[2023-07-28T16:46:23.391+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Transform manual__2023-07-28T16:00:30.036848+00:00 [queued]>
+[2023-07-28T16:46:23.401+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Transform manual__2023-07-28T16:00:30.036848+00:00 [queued]>
+[2023-07-28T16:46:23.401+0000] {taskinstance.py:1308} INFO - Starting attempt 5 of 5
+[2023-07-28T16:46:23.413+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Transform> on 2023-07-28 16:00:30.036848+00:00
+[2023-07-28T16:46:23.418+0000] {standard_task_runner.py:57} INFO - Started process 1678 to run task
+[2023-07-28T16:46:23.421+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Transform', 'manual__2023-07-28T16:00:30.036848+00:00', '--job-id', '58', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpxbpz0psx']
+[2023-07-28T16:46:23.423+0000] {standard_task_runner.py:85} INFO - Job 58: Subtask Transform
+[2023-07-28T16:46:23.461+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Transform manual__2023-07-28T16:00:30.036848+00:00 [running]> on host e5187b3c4256
+[2023-07-28T16:46:23.519+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Transform' AIRFLOW_CTX_EXECUTION_DATE='2023-07-28T16:00:30.036848+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-28T16:00:30.036848+00:00'
+[2023-07-28T16:46:23.526+0000] {Transform.py:43} INFO - /opt/***/dags/transformedresult_page_number_1_2023-07-28.json
+[2023-07-28T16:46:23.532+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-07-28T16:46:23.539+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=toronto_real_estate_etl, task_id=Transform, execution_date=20230728T160030, start_date=20230728T164623, end_date=20230728T164623
+[2023-07-28T16:46:23.553+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-07-28T16:46:23.569+0000] {taskinstance.py:2653} INFO - 1 downstream tasks scheduled from follow-on schedule check

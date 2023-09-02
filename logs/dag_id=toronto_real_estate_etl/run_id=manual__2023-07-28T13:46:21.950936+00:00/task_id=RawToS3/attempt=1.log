@@ -1,0 +1,22 @@
+[2023-07-28T13:50:34.762+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.RawToS3 manual__2023-07-28T13:46:21.950936+00:00 [queued]>
+[2023-07-28T13:50:34.770+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.RawToS3 manual__2023-07-28T13:46:21.950936+00:00 [queued]>
+[2023-07-28T13:50:34.770+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-07-28T13:50:34.779+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): RawToS3> on 2023-07-28 13:46:21.950936+00:00
+[2023-07-28T13:50:34.783+0000] {standard_task_runner.py:57} INFO - Started process 5401 to run task
+[2023-07-28T13:50:34.786+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'RawToS3', 'manual__2023-07-28T13:46:21.950936+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpq6ue2gqt']
+[2023-07-28T13:50:34.788+0000] {standard_task_runner.py:85} INFO - Job 19: Subtask RawToS3
+[2023-07-28T13:50:34.822+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.RawToS3 manual__2023-07-28T13:46:21.950936+00:00 [running]> on host 7d0ee807347f
+[2023-07-28T13:50:34.874+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='RawToS3' AIRFLOW_CTX_EXECUTION_DATE='2023-07-28T13:46:21.950936+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-28T13:46:21.950936+00:00'
+[2023-07-28T13:50:34.875+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 75, in uploadRawtoS3
+    files = os.listdir(getDirectoryPath('data'))
+FileNotFoundError: [Errno 2] No such file or directory: 'data'
+[2023-07-28T13:50:34.881+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=RawToS3, execution_date=20230728T134621, start_date=20230728T135034, end_date=20230728T135034
+[2023-07-28T13:50:34.888+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 19 for task RawToS3 ([Errno 2] No such file or directory: 'data'; 5401)
+[2023-07-28T13:50:34.918+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-28T13:50:34.936+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

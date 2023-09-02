@@ -1,0 +1,30 @@
+[2023-08-04T09:40:59.256+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T09:40:59.262+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T09:40:59.263+0000] {taskinstance.py:1308} INFO - Starting attempt 2 of 2
+[2023-08-04T09:40:59.272+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-08-04 09:33:43.522776+00:00
+[2023-08-04T09:40:59.276+0000] {standard_task_runner.py:57} INFO - Started process 318 to run task
+[2023-08-04T09:40:59.279+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'manual__2023-08-04T09:33:43.522776+00:00', '--job-id', '98', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpfktsbsrj']
+[2023-08-04T09:40:59.281+0000] {standard_task_runner.py:85} INFO - Job 98: Subtask Extract
+[2023-08-04T09:40:59.312+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [running]> on host e5187b3c4256
+[2023-08-04T09:40:59.363+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-08-04T09:33:43.522776+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-04T09:33:43.522776+00:00'
+[2023-08-04T09:40:59.364+0000] {Extract.py:31} INFO - https://www.kijiji.ca/b-apartments-condos/page-1/c37l1700273
+[2023-08-04T09:45:53.423+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/context.py:313: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(k, replacements))
+
+[2023-08-04T09:45:53.424+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 22, in extract
+    e.getListings(2,date)
+  File "/opt/airflow/dags/src/Extract.py", line 53, in getListings
+    self.saveToJson(i,run_date)
+  File "/opt/airflow/dags/src/Extract.py", line 58, in saveToJson
+    if not os.path.exists('data/'+run_date):
+TypeError: can only concatenate str (not "DateTime") to str
+[2023-08-04T09:45:53.431+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230804T093343, start_date=20230804T094059, end_date=20230804T094553
+[2023-08-04T09:45:53.442+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 98 for task Extract (can only concatenate str (not "DateTime") to str; 318)
+[2023-08-04T09:45:53.468+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-08-04T09:45:53.489+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

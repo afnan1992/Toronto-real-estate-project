@@ -1,0 +1,27 @@
+[2023-07-28T13:20:13.376+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T13:20:10.849176+00:00 [queued]>
+[2023-07-28T13:20:13.383+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T13:20:10.849176+00:00 [queued]>
+[2023-07-28T13:20:13.384+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-07-28T13:20:13.393+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-07-28 13:20:10.849176+00:00
+[2023-07-28T13:20:13.398+0000] {standard_task_runner.py:57} INFO - Started process 4863 to run task
+[2023-07-28T13:20:13.401+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'manual__2023-07-28T13:20:10.849176+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp041h4vsv']
+[2023-07-28T13:20:13.403+0000] {standard_task_runner.py:85} INFO - Job 15: Subtask Extract
+[2023-07-28T13:20:13.436+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T13:20:10.849176+00:00 [running]> on host 7d0ee807347f
+[2023-07-28T13:20:13.492+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-07-28T13:20:10.849176+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-28T13:20:10.849176+00:00'
+[2023-07-28T13:20:13.493+0000] {main.py:30} INFO - https://www.kijiji.ca/b-apartments-condos/page-1/c37l1700273
+[2023-07-28T13:24:13.169+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 68, in extract
+    e.getListings(2)
+  File "/opt/airflow/dags/src/main.py", line 50, in getListings
+    self.saveToJson(i)
+  File "/opt/airflow/dags/src/main.py", line 56, in saveToJson
+    with open(filename, 'w+') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/result_page_number_1_2023-07-28.json'
+[2023-07-28T13:24:13.178+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230728T132010, start_date=20230728T132013, end_date=20230728T132413
+[2023-07-28T13:24:13.189+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 15 for task Extract ([Errno 2] No such file or directory: 'data/result_page_number_1_2023-07-28.json'; 4863)
+[2023-07-28T13:24:13.207+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-28T13:24:13.223+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

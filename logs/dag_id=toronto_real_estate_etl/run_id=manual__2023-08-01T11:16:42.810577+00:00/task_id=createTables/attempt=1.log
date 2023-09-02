@@ -1,0 +1,30 @@
+[2023-08-01T11:21:09.510+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.createTables manual__2023-08-01T11:16:42.810577+00:00 [queued]>
+[2023-08-01T11:21:09.517+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.createTables manual__2023-08-01T11:16:42.810577+00:00 [queued]>
+[2023-08-01T11:21:09.517+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-08-01T11:21:09.527+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): createTables> on 2023-08-01 11:16:42.810577+00:00
+[2023-08-01T11:21:09.532+0000] {standard_task_runner.py:57} INFO - Started process 612 to run task
+[2023-08-01T11:21:09.534+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'createTables', 'manual__2023-08-01T11:16:42.810577+00:00', '--job-id', '74', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpmxolf463']
+[2023-08-01T11:21:09.536+0000] {standard_task_runner.py:85} INFO - Job 74: Subtask createTables
+[2023-08-01T11:21:09.565+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.createTables manual__2023-08-01T11:16:42.810577+00:00 [running]> on host e5187b3c4256
+[2023-08-01T11:21:09.616+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='createTables' AIRFLOW_CTX_EXECUTION_DATE='2023-08-01T11:16:42.810577+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-01T11:16:42.810577+00:00'
+[2023-08-01T11:21:12.822+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 93, in createRedShiftTables
+    createTables()
+  File "/opt/airflow/dags/src/Load.py", line 138, in createTables
+    cur.execute(sql_create_table)
+psycopg2.errors.SyntaxError: syntax error at or near ")"
+LINE 34:                         );
+                                 ^
+
+[2023-08-01T11:21:12.828+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=createTables, execution_date=20230801T111642, start_date=20230801T112109, end_date=20230801T112112
+[2023-08-01T11:21:12.837+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 74 for task createTables (syntax error at or near ")"
+LINE 34:                         );
+                                 ^
+; 612)
+[2023-08-01T11:21:12.843+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-08-01T11:21:12.861+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

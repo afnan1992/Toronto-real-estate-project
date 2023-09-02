@@ -1,0 +1,7 @@
+dags/data
+dags/transformed
+dags/src/configuration.conf
+dags/logs
+terraform/.terraform/*
+terraform.tfstate
+.env

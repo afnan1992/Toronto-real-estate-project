@@ -1,0 +1,26 @@
+[2023-08-04T10:10:38.650+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.createTables manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T10:10:38.657+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.createTables manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T10:10:38.658+0000] {taskinstance.py:1308} INFO - Starting attempt 2 of 2
+[2023-08-04T10:10:38.667+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): createTables> on 2023-08-04 09:33:43.522776+00:00
+[2023-08-04T10:10:38.671+0000] {standard_task_runner.py:57} INFO - Started process 860 to run task
+[2023-08-04T10:10:38.674+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'createTables', 'manual__2023-08-04T09:33:43.522776+00:00', '--job-id', '106', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp3itys4r8']
+[2023-08-04T10:10:38.675+0000] {standard_task_runner.py:85} INFO - Job 106: Subtask createTables
+[2023-08-04T10:10:38.706+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.createTables manual__2023-08-04T09:33:43.522776+00:00 [running]> on host e5187b3c4256
+[2023-08-04T10:10:38.762+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='createTables' AIRFLOW_CTX_EXECUTION_DATE='2023-08-04T09:33:43.522776+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-04T09:33:43.522776+00:00'
+[2023-08-04T10:10:42.477+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 47, in createRedShiftTables
+    createTables()
+  File "/opt/airflow/dags/src/Load.py", line 139, in createTables
+    cur.execute(create_temp_table)
+psycopg2.errors.DuplicateTable: Relation "staging_table" already exists
+
+[2023-08-04T10:10:42.483+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=createTables, execution_date=20230804T093343, start_date=20230804T101038, end_date=20230804T101042
+[2023-08-04T10:10:42.492+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 106 for task createTables (Relation "staging_table" already exists
+; 860)
+[2023-08-04T10:10:42.517+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-08-04T10:10:42.536+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

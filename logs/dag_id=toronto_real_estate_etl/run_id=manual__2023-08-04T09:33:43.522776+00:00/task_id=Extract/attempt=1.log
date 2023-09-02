@@ -1,0 +1,27 @@
+[2023-08-04T09:33:44.395+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T09:33:44.401+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T09:33:44.401+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-08-04T09:33:44.410+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-08-04 09:33:43.522776+00:00
+[2023-08-04T09:33:44.415+0000] {standard_task_runner.py:57} INFO - Started process 189 to run task
+[2023-08-04T09:33:44.417+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'manual__2023-08-04T09:33:43.522776+00:00', '--job-id', '97', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpy24vjw1c']
+[2023-08-04T09:33:44.419+0000] {standard_task_runner.py:85} INFO - Job 97: Subtask Extract
+[2023-08-04T09:33:44.452+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [running]> on host e5187b3c4256
+[2023-08-04T09:33:44.501+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-08-04T09:33:43.522776+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-04T09:33:43.522776+00:00'
+[2023-08-04T09:33:44.501+0000] {Extract.py:31} INFO - https://www.kijiji.ca/b-apartments-condos/page-1/c37l1700273
+[2023-08-04T09:38:20.320+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 22, in extract
+    e.getListings(2,date)
+  File "/opt/airflow/dags/src/Extract.py", line 53, in getListings
+    self.saveToJson(i,run_date)
+  File "/opt/airflow/dags/src/Extract.py", line 58, in saveToJson
+    if not os.path.exists('data/'+self.run_date):
+AttributeError: 'Extract' object has no attribute 'run_date'
+[2023-08-04T09:38:20.327+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230804T093343, start_date=20230804T093344, end_date=20230804T093820
+[2023-08-04T09:38:20.338+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 97 for task Extract ('Extract' object has no attribute 'run_date'; 189)
+[2023-08-04T09:38:20.368+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-08-04T09:38:20.386+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

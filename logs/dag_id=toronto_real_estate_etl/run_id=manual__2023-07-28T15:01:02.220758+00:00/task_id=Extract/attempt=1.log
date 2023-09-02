@@ -1,0 +1,28 @@
+[2023-07-28T15:01:03.470+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T15:01:02.220758+00:00 [queued]>
+[2023-07-28T15:01:03.477+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T15:01:02.220758+00:00 [queued]>
+[2023-07-28T15:01:03.477+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-07-28T15:01:03.488+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-07-28 15:01:02.220758+00:00
+[2023-07-28T15:01:03.492+0000] {standard_task_runner.py:57} INFO - Started process 96 to run task
+[2023-07-28T15:01:03.495+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'manual__2023-07-28T15:01:02.220758+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpsz1tjjjx']
+[2023-07-28T15:01:03.497+0000] {standard_task_runner.py:85} INFO - Job 26: Subtask Extract
+[2023-07-28T15:01:03.535+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract manual__2023-07-28T15:01:02.220758+00:00 [running]> on host 223ed6136de1
+[2023-07-28T15:01:03.597+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-07-28T15:01:02.220758+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-07-28T15:01:02.220758+00:00'
+[2023-07-28T15:01:03.598+0000] {main.py:30} INFO - https://www.kijiji.ca/b-apartments-condos/page-1/c37l1700273
+[2023-07-28T15:05:18.317+0000] {logging_mixin.py:150} INFO - /opt/***/dags/data/result_page_number_1_2023-07-28.json
+[2023-07-28T15:05:18.317+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/src/main.py", line 65, in extract
+    e.getListings(2)
+  File "/opt/airflow/dags/src/main.py", line 50, in getListings
+    self.saveToJson(i)
+  File "/opt/airflow/dags/src/main.py", line 58, in saveToJson
+    with open(filename, 'w+') as fp:
+PermissionError: [Errno 13] Permission denied: '/opt/airflow/dags/data/result_page_number_1_2023-07-28.json'
+[2023-07-28T15:05:18.323+0000] {taskinstance.py:1350} INFO - Marking task as FAILED. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230728T150102, start_date=20230728T150103, end_date=20230728T150518
+[2023-07-28T15:05:18.332+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 26 for task Extract ([Errno 13] Permission denied: '/opt/airflow/dags/data/result_page_number_1_2023-07-28.json'; 96)
+[2023-07-28T15:05:18.352+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-07-28T15:05:18.368+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

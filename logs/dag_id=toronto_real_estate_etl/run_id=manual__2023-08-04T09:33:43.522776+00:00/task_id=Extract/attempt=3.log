@@ -1,0 +1,18 @@
+[2023-08-04T09:50:17.745+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T09:50:17.751+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [queued]>
+[2023-08-04T09:50:17.751+0000] {taskinstance.py:1308} INFO - Starting attempt 3 of 3
+[2023-08-04T09:50:17.760+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): Extract> on 2023-08-04 09:33:43.522776+00:00
+[2023-08-04T09:50:17.763+0000] {standard_task_runner.py:57} INFO - Started process 491 to run task
+[2023-08-04T09:50:17.766+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'toronto_real_estate_etl', 'Extract', 'manual__2023-08-04T09:33:43.522776+00:00', '--job-id', '99', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp27cz0hho']
+[2023-08-04T09:50:17.767+0000] {standard_task_runner.py:85} INFO - Job 99: Subtask Extract
+[2023-08-04T09:50:17.799+0000] {task_command.py:410} INFO - Running <TaskInstance: toronto_real_estate_etl.Extract manual__2023-08-04T09:33:43.522776+00:00 [running]> on host e5187b3c4256
+[2023-08-04T09:50:17.849+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='toronto_real_estate_etl' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-08-04T09:33:43.522776+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-08-04T09:33:43.522776+00:00'
+[2023-08-04T09:50:17.850+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/context.py:313: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(k, replacements))
+
+[2023-08-04T09:50:17.850+0000] {Extract.py:31} INFO - https://www.kijiji.ca/b-apartments-condos/page-1/c37l1700273
+[2023-08-04T09:54:39.389+0000] {main.py:23} INFO - Scraping listings was successfull
+[2023-08-04T09:54:39.390+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-08-04T09:54:39.397+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=toronto_real_estate_etl, task_id=Extract, execution_date=20230804T093343, start_date=20230804T095017, end_date=20230804T095439
+[2023-08-04T09:54:39.428+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-08-04T09:54:39.447+0000] {taskinstance.py:2653} INFO - 1 downstream tasks scheduled from follow-on schedule check
