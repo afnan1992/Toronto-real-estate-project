@@ -7,6 +7,7 @@ I created this project to understand the fundamentals behind web scraping and ho
 ![Architecture](imgs/architecture.png)
 
 # Setting up Infrastructure using Terraform
+
    Go to the root directory of this project
    cd into terrafrom directory
    terraform apply -var "db_password=YourPassword" (This is needed to setup the password for redshift cluster)
@@ -22,4 +23,5 @@ I created this project to understand the fundamentals behind web scraping and ho
 # Airflow
 1. To connect to the airflow instance running on docker, type localhost:8080 on your browser
 2. You should be able to see the etl pipeline like in the picture below
-   
+
+![Airflow](imgs/airflow.png)   
