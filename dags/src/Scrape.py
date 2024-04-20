@@ -165,7 +165,3 @@ class Scrape:
     
 
         
-# s= Scrape('https://www.kijiji.ca/v-apartments-condos/city-of-toronto/3-bedroom-2-level-penthouse-yonge-davisville/1663034997')
-# s.getHeaderDetails()
-# s.getOverviewDetailsv2()
-# print(s.returnOverviewDict())
